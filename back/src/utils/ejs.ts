@@ -20,7 +20,7 @@ export const renderPage = (
     (err, html) => {
       if (err) {
         log.error(err.message)
-        return res.status(500).send('Oops :(')
+        return res.status(500).send(err.message)
       }
       res.type('text/html').send(html)
     }
