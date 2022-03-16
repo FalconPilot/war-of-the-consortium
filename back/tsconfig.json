@@ -1,5 +1,11 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.rules.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "references": [
+    { "path": "../common" }
+  ],
   "include": [
     "./src/**/*.ts"
   ]

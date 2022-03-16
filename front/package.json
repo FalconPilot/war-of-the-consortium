@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "build": "webpack"
   },
   "dependencies": {
     "react": "^17.0.2",

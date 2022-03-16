@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.rules.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "include": [
+    "./**/*.ts"
+  ]
+}

@@ -8,9 +8,13 @@
     "common"
   ],
   "scripts": {
+    "build:front": "cd ./front && yarn run build",
+    "build:back": "cd ./back && yarn run build",
+    "build": "yarn run build:front && yarn run build:back",
     "dev:front": "cd ./front && yarn run dev",
     "dev:back": "cd ./back && yarn run dev",
-    "dev": "concurrently \"yarn run dev:front\" \"yarn run dev:back\""
+    "dev": "concurrently \"yarn run dev:front\" \"yarn run dev:back\"",
+    "start": "cd ./back && yarn start"
   },
   "dependencies": {},
   "devDependencies": {

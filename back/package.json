@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "dev": "dotenv -e .env \"nodemon src/index.ts\""
+    "dev": "dotenv -e .env \"nodemon src/index.ts\"",
+    "build": "tsc --build",
+    "start": "node ./dist/index.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

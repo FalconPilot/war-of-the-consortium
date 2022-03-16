@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
     "strict": true
-  }
+  },
+  "references": [
+    { "path": "./common" },
+    { "path": "./back" },
+    { "path": "./front" }
+  ]
 }
