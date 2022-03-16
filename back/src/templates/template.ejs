@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="<%= data.locale %>">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= data.title || 'War of the Consortium' %></title>
+  </head>
+  <body>
+    <%- include(`./${data.page}.ejs`, { data }) %>
+  </body>
+</html>

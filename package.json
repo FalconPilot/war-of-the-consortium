@@ -1,0 +1,19 @@
+{
+  "name": "wotc",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "back",
+    "front",
+    "common"
+  ],
+  "scripts": {
+    "dev:front": "cd ./front && yarn run dev",
+    "dev:back": "cd ./back && yarn run dev",
+    "dev": "concurrently \"yarn run dev:front\" \"yarn run dev:back\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

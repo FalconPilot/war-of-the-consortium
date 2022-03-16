@@ -1,1 +1,1 @@
-# war-of-the-consortium
+# War of the Consortium
