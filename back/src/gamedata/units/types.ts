@@ -3,7 +3,7 @@ import * as t from 'io-ts'
 import {
   enumCodec,
   TranslationCodec,
-} from 'wotc-common/types'
+} from 'wotc-common/dist/types'
 
 export enum ArmorTypes {
   None = 0,

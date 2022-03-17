@@ -1,8 +1,11 @@
 {
   "extends": "../tsconfig.rules.json",
   "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
     "composite": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "rootDir": "."
   },
   "include": [
     "./**/*.ts"

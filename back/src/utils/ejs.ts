@@ -2,7 +2,7 @@ import * as path from 'path'
 import * as ejs from 'ejs'
 import { Request, Response } from 'express'
 
-import { isLocale } from 'wotc-common/types'
+import { isLocale } from 'wotc-common/dist/types'
 
 import { log } from './cli'
 
