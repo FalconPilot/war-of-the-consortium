@@ -5,7 +5,8 @@
   "workspaces": [
     "back",
     "front",
-    "common"
+    "common",
+    "database"
   ],
   "scripts": {
     "build:front": "cd ./front && yarn run build",

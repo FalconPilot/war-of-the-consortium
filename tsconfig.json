@@ -4,7 +4,6 @@
   },
   "references": [
     { "path": "./common" },
-    { "path": "./back" },
-    { "path": "./front" }
+    { "path": "./database" }
   ]
 }

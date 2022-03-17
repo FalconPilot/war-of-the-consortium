@@ -1,5 +1,9 @@
 import * as express from 'express'
 import * as cookieParser from 'cookie-parser'
+import * as session from 'express-session'
+import { PrismaSessionStore } from '@quixo3/prisma-session-store'
+
+import { DBClient } from 'wotc-database/types'
 
 import { log } from './utils/cli'
 
@@ -7,13 +11,32 @@ import { validateEnv } from './env'
 import { mainRouter } from './router'
 import { renderPage } from './utils/ejs'
 
+const dbClient = new DBClient()
+
 // Initialization
 const env = validateEnv(process.env)
 const app = express()
 
+// Global settings
+if (env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1)
+}
+
 // Middlewares and routers
-app.use(cookieParser())
-app.use('/', mainRouter(env))
+app.use(cookieParser(env.COOKIE_SECRET))
+app.use(session({
+  cookie: {
+    secure: env.NODE_ENV === 'production'
+  },
+  resave: true,
+  saveUninitialized: false,
+  secret: env.COOKIE_SECRET,
+  store: new PrismaSessionStore(dbClient, {
+    checkPeriod: 2 * 60 * 1000, // 2min
+    dbRecordIdIsSessionId: true
+  })
+}))
+app.use('/', mainRouter(dbClient, env))
 
 // 404 fallback
 app.use((req, res) => {
@@ -21,7 +44,21 @@ app.use((req, res) => {
   renderPage('404')(req, res)
 })
 
+// Startup function
+const startup = (): Promise<void> =>
+  new Promise((resolve, reject) => {
+    try {
+      app.listen(env.PORT, () => {
+        resolve()
+      })
+    } catch (err) {
+      reject(err)
+    }
+  })
+
 // Start server
-app.listen(env.PORT, () => {
-  log.msg(`WOTC server running on port ${env.PORT}`)
-})
+startup()
+  .then(() => {
+    log.msg(`WOTC server running on port ${env.PORT}`)
+  })
+  .finally(async () => { await dbClient.$disconnect() })

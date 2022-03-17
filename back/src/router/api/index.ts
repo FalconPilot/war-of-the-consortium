@@ -1,12 +1,17 @@
 import { Router } from 'express'
 
-import { unitsRouter } from './units'
+import { DBClient } from 'wotc-database/types'
+
 import { BackEnv } from '../../types'
 
-export const apiRouter = (env: BackEnv): Router => {
+import { unitsRouter } from './units'
+import { usersRouter } from './users'
+
+export const apiRouter = (dbClient: DBClient, env: BackEnv): Router => {
   const router = Router()
 
-  router.use('/units', unitsRouter(env))
+  router.use('/units', unitsRouter(dbClient, env))
+  router.use('/users', usersRouter(dbClient, env))
 
   return router
 }

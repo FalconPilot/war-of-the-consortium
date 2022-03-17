@@ -10,12 +10,18 @@ export const renderPage = (
   page: string,
   data: Record<string, any> = {},
 ) => (req: Request, res: Response): void => {
+  const browserLang = req.acceptsLanguages('fr', 'en')
+
   ejs.renderFile(
     path.resolve(__dirname, '..', 'templates', 'template.ejs'),
     { data: {
       ...data,
       page,
-      locale: isLocale(req.cookies?.locale) ? req.cookies.locale : 'en',
+      locale: isLocale(req.cookies?.locale)
+        ? req.cookies.locale
+        : isLocale(browserLang)
+          ? browserLang
+          : 'en',
     } },
     (err, html) => {
       if (err) {

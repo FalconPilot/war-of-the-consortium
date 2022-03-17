@@ -1,7 +1,9 @@
 {
   "extends": "../tsconfig.rules.json",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "target": "ES2020",
+    "moduleResolution": "node"
   },
   "references": [
     { "path": "../common" }

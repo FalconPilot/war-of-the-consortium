@@ -1,8 +1,15 @@
 import { Router } from 'express'
 
-import { trooper } from '../../../gamedata/units'
+import { DBClient } from 'wotc-database/types'
 
-export const infantryRoutes = (router: Router): void => {
+import { trooper } from '../../../gamedata/units'
+import { BackEnv } from '../../../types'
+
+export const infantryRoutes = (
+  router: Router,
+  dbClient: DBClient,
+  env: BackEnv
+): void => {
   router.get('/trooper', (req, res) => {
     res.json(trooper)
   })
