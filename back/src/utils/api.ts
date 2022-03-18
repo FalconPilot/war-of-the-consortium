@@ -12,7 +12,7 @@ export const parse = {
     const num = parseInt(v, 10)
 
     if (isNaN(num)) {
-      throw new APIError(400, `Param "${scope} is not a valid number"`)
+      throw new APIError(400, `Param "${scope}" is not a valid number`)
     }
 
     return num

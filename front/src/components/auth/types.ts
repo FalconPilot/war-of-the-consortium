@@ -13,3 +13,7 @@ export type LoginForm = Form<{
   email: string,
   password: string,
 }>
+
+export interface CommonProps {
+  switchForm: (fk: CurrentForm) => () => void
+}

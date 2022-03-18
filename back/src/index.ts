@@ -1,6 +1,7 @@
 import * as express from 'express'
 import * as cookieParser from 'cookie-parser'
 import * as session from 'express-session'
+import * as bodyParser from 'body-parser'
 import { PrismaSessionStore } from '@quixo3/prisma-session-store'
 
 import { DBClient } from 'wotc-database/types'
@@ -23,6 +24,7 @@ if (env.NODE_ENV === 'production') {
 }
 
 // Middlewares and routers
+app.use(bodyParser.json())
 app.use(cookieParser(env.COOKIE_SECRET))
 app.use(session({
   cookie: {

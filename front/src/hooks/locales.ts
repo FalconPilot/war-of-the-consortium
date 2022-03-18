@@ -14,8 +14,6 @@ export const useTranslations = () => {
     return isLocale(lang) ? lang : 'en'
   }, [navigator.language])
 
-  console.log('lang', defaultLang)
-
   const [localeCookie, setLocaleCookie] = useCookie('locale', defaultLang)
 
   const locale = React.useMemo(() => (
