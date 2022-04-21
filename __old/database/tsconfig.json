@@ -1,0 +1,24 @@
+{
+  "extends": "../tsconfig.rules.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "lib": ["esnext"],
+    "esModuleInterop": true
+  },
+  "references": [
+    { "path": "../common/tsconfig.json" }
+  ],
+  "include": [
+    "./index.ts",
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "prisma",
+    "dist"
+  ]
+}

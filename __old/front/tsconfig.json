@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.rules.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "jsx": "react",
+    "lib": ["DOM", "ES2021"]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "references": [
+    { "path": "../common/tsconfig.json" },
+    { "path": "../database/tsconfig.json" }
+  ]
+}

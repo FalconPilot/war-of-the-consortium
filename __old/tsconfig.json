@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": true
+  },
+  "references": [
+    { "path": "./common" },
+    { "path": "./database" }
+  ]
+}
